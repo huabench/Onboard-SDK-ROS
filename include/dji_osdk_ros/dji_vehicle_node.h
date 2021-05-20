@@ -556,6 +556,7 @@ namespace dji_osdk_ros
                                  DJI::OSDK::UserData userData);
 
 #ifdef ADVANCED_SENSING
+  
     static void publishMainCameraImage(CameraRGBImage rgbImg, void* userData);
     static void publishFPVCameraImage(CameraRGBImage rgbImg, void* userData);
     static void publishCameraH264(uint8_t* buf, int bufLen, void* userData);
