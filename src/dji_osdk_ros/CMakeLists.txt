@@ -20,9 +20,9 @@ FOREACH(EXAMPLE ${EXAMPLES})
                         ${PROJECT_NAME}
                         )
 
-  INSTALL(TARGETS ${MY_TARGET}
-          ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-          LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-          RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-          )
 ENDFOREACH()
+
+ADD_LIBRARY(${PROJECT_NAME}_extend SHARED dji_vehicle_node.cpp)
+TARGET_LINK_LIBRARIES(${PROJECT_NAME}_extend
+                        ${PROJECT_NAME}
+                      )

@@ -830,7 +830,19 @@ void VehicleNode::publishMainCameraImage(CameraRGBImage rgbImg, void* userData)
 
   img.header.stamp = ros::Time::now();
   img.header.frame_id = "MAIN_CAMERA";
-  node_ptr->main_camera_stream_publisher_.publish(img);
+  ROS_INFO("Enter dji pub");
+  node_ptr->publishMainCameraImageCore(img);
+
+}
+
+/* iusl: add this virtual function so that it can be overide 
+  and change the behavior of publishMainCameraImage
+*/
+
+void VehicleNode::publishMainCameraImageCore(sensor_msgs::Image img)
+{
+  ROS_INFO("Enter dji pub core ================");
+  main_camera_stream_publisher_.publish(img);
 }
 
 void VehicleNode::publishFPVCameraImage(CameraRGBImage rgbImg, void* userData)
