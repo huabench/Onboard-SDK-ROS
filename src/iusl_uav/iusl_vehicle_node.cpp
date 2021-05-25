@@ -5,13 +5,12 @@ using namespace iusl_uav;
 IUSLVehicleNode::IUSLVehicleNode():_it(_nh) {
     _image_transport_pub = _it.advertise("iusl/main_camera_images", 1);
 }
-/*
+
+/* use image_transport to publish images */
 void IUSLVehicleNode::publishMainCameraImageCore(sensor_msgs::Image img) {
-    //_image_transport_pub.publish(img);
-    VehicleNode::publishMainCameraImageCore(img);
-    ROS_INFO("=================");
+    _image_transport_pub.publish(img);
 }
-*/
+
 
 int main(int argc, char **argv)
 {
@@ -21,8 +20,5 @@ int main(int argc, char **argv)
     ros::spin();
     return 0;
 }
-
-
-
 
 

@@ -1,0 +1,19 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/dji/huaben_ws/devel/include/**",
+        "/opt/ros/kinetic/include/**",
+        "/home/dji/huaben_ws/src/Onboard-SDK-ROS-origin/include/**",
+        "/home/dji/huaben_ws/src/iusl-uav/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}

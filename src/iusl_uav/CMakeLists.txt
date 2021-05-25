@@ -10,10 +10,18 @@ find_package( OpenCV 3.3.0 QUIET )
     add_definitions(-DOPENCV)
 endif()
 
+FILE(GLOB FILES modules/*.cpp)
 
-ADD_EXECUTABLE(iusl_camera_node iusl_camera_node.cpp modules/iusl_camera_node_image_handler.cpp)
+ADD_EXECUTABLE(iusl_camera_node
+    ${FILES}
+    iusl_camera_node.cpp 
+)
+
+
 target_link_libraries(
     iusl_camera_node
+    ${PROJECT_SOURCE_DIR}/src/iusl_uav/darknet/libdarknet.so
     ${PROJECT_NAME} 
     ${catkin_LIBRARIES}
 )
+

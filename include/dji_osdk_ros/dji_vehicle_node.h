@@ -574,11 +574,15 @@ namespace dji_osdk_ros
     static E_OsdkStat updateMissionState(T_CmdHandle *cmdHandle, const T_CmdInfo *cmdInfo,
                                          const uint8_t *cmdData, void *userData);
 
-public:
-    void gpsConvertENU(double &ENU_x, double &ENU_y,
-                       double gps_t_lon, double gps_t_lat,
-                       double gps_r_lon, double gps_r_lat);
-    void alignRosTimeWithFlightController(ros::Time now_time, uint32_t tick);
+    public:
+        void gpsConvertENU(double &ENU_x, double &ENU_y,
+                          double gps_t_lon, double gps_t_lat,
+                          double gps_r_lon, double gps_r_lat);
+        void alignRosTimeWithFlightController(ros::Time now_time, uint32_t tick);
+
+    protected:
+      // iusl: add function, related to publishMainCameraImage
+      virtual void publishMainCameraImageCore(sensor_msgs::Image);
   };
 }
 #endif // __DJI_VEHICLE_NODE_HH__
