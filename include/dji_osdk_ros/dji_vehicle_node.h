@@ -339,6 +339,7 @@ namespace dji_osdk_ros
       ros::Publisher waypointV2_mission_event_publisher_;
 
     protected:
+      VehicleWrapper* ptr_wrapper_;
       /*! for general */
       bool getDroneTypeCallback(dji_osdk_ros::GetDroneType::Request &request,
                                 dji_osdk_ros::GetDroneType::Response &response);
@@ -474,7 +475,6 @@ namespace dji_osdk_ros
 
     private:
       ros::NodeHandle nh_;
-      VehicleWrapper* ptr_wrapper_;
       TelemetryType telemetry_from_fc_;
 
       int           app_id_;

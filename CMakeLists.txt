@@ -197,6 +197,16 @@ add_service_files(
   SetupCameraStream.srv
 )
 
+# iusl: extended msg and srv
+add_message_files(
+  FILES
+  ../src/iusl_uav/msg/iuslDetectionResult.msg
+)
+add_service_files (
+    FILES
+    ../src/iusl_uav/srv/iuslSetRtkEnable.srv 
+)
+
 ## Generate actions in the 'action' folder
 # add_action_files(
 #   FILES
