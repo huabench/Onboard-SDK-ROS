@@ -198,13 +198,20 @@ add_service_files(
 )
 
 # iusl: extended msg and srv
+
 add_message_files(
+  DIRECTORY src/iusl_uav/msg
   FILES
-  ../src/iusl_uav/msg/iuslDetectionResult.msg
+  iuslDetectionResult.msg
+  iuslMyState.msg
+  iuslTarState.msg
+  iuslUAVCtrlCmd.msg
 )
+
 add_service_files (
-    FILES
-    ../src/iusl_uav/srv/iuslSetRtkEnable.srv 
+  DIRECTORY src/iusl_uav/srv
+  FILES
+  iuslSetRtkEnable.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -279,6 +286,7 @@ include_directories(
 )
 
 add_subdirectory(src)
+add_subdirectory(scripts)
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}

@@ -8,7 +8,9 @@ IUSLVehicleNode::IUSLVehicleNode():
     _image_transport_pub(_it.advertise("iusl/main_camera_images", 1)),
     _set_rtk_enable_server(_nh.advertiseService("/iusl/set_rtk_enable", 
         &IUSLVehicleNode::iuslSetRtkEnableCallback, this))
-    {}
+    {
+        
+    }
 
 bool IUSLVehicleNode::iuslSetRtkEnableCallback(iuslSrvReq req, iuslSrvRes res) {
     res.result = ptr_wrapper_->getVehicle()->flightController->setRtkEnableSync(FlightController::RtkEnabled::RTK_ENABLE, 1);

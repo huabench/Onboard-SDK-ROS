@@ -3,5 +3,6 @@
 *.swo
 *.swp
 *sdk.launch
+*.pyc
 build.sh
 .idea/
