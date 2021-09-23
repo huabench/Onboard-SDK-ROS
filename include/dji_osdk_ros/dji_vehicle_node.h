@@ -339,7 +339,11 @@ namespace dji_osdk_ros
       ros::Publisher waypointV2_mission_event_publisher_;
 
     protected:
-      VehicleWrapper* ptr_wrapper_;
+      // iusl: add control tasl
+      bool takeOff();
+      bool returnHome(); 
+      bool joystickControl(dji_osdk_ros::JoystickMode, dji_osdk_ros::JoystickCommand); // TODO: const
+            
       /*! for general */
       bool getDroneTypeCallback(dji_osdk_ros::GetDroneType::Request &request,
                                 dji_osdk_ros::GetDroneType::Response &response);
@@ -474,6 +478,7 @@ namespace dji_osdk_ros
       bool initSubscribe();
 
     private:
+      VehicleWrapper* ptr_wrapper_;
       ros::NodeHandle nh_;
       TelemetryType telemetry_from_fc_;
 

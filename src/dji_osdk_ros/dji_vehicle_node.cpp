@@ -985,6 +985,19 @@ bool VehicleNode::getDroneTypeCallback(dji_osdk_ros::GetDroneType::Request &requ
 
 }
 
+bool VehicleNode::takeOff() {
+  return ptr_wrapper_->monitoredTakeoff(FLIGHT_CONTROL_WAIT_TIMEOUT);
+}
+
+bool VehicleNode::returnHome() {
+  return ptr_wrapper_->goHomeAndConfirmLanding(FLIGHT_CONTROL_WAIT_TIMEOUT);
+}
+
+bool VehicleNode::joystickControl(dji_osdk_ros::JoystickMode mode, dji_osdk_ros::JoystickCommand cmd) {
+  return ptr_wrapper_ -> setJoystickMode(mode) and ptr_wrapper_ -> JoystickAction(cmd);
+}
+      
+
 bool VehicleNode::taskCtrlCallback(FlightTaskControl::Request&  request, FlightTaskControl::Response& response)
 {
   ROS_DEBUG("called taskCtrlCallback");
