@@ -837,7 +837,7 @@ void VehicleNode::publishMainCameraImage(CameraRGBImage rgbImg, void* userData)
   and change the behavior of publishMainCameraImage
 */
 
-void VehicleNode::publishMainCameraImageCore(sensor_msgs::Image img)
+void VehicleNode::publishMainCameraImageCore(const sensor_msgs::Image& img)
 {
   main_camera_stream_publisher_.publish(img);
 }

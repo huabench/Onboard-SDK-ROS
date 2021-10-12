@@ -339,11 +339,6 @@ namespace dji_osdk_ros
       ros::Publisher waypointV2_mission_event_publisher_;
 
     protected:
-      // iusl: add control tasl
-      bool takeOff();
-      bool returnHome(); 
-      bool joystickControl(dji_osdk_ros::JoystickMode, dji_osdk_ros::JoystickCommand); // TODO: const
-            
       /*! for general */
       bool getDroneTypeCallback(dji_osdk_ros::GetDroneType::Request &request,
                                 dji_osdk_ros::GetDroneType::Response &response);
@@ -587,7 +582,7 @@ namespace dji_osdk_ros
 
     protected:
       // iusl: add function, related to publishMainCameraImage
-      virtual void publishMainCameraImageCore(sensor_msgs::Image);
+      virtual void publishMainCameraImageCore(const sensor_msgs::Image&);
   };
 }
 #endif // __DJI_VEHICLE_NODE_HH__
