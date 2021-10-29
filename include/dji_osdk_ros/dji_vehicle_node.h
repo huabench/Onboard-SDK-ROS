@@ -57,6 +57,8 @@
 #include <std_msgs/String.h>
 #include <nmea_msgs/Sentence.h>
 
+#include <image_transport/image_transport.h>
+
 /*! services */
 //flight control services
 #include <dji_osdk_ros/GetDroneType.h>
@@ -198,6 +200,7 @@ namespace dji_osdk_ros
       bool initDataSubscribeFromFC();
       bool cleanUpSubscribeFromFC();
     protected:
+      VehicleWrapper* ptr_wrapper_;
       /*! services */
       /*! for general */
       ros::ServiceServer get_drone_type_server_;
@@ -473,8 +476,11 @@ namespace dji_osdk_ros
       bool initSubscribe();
 
     private:
-      VehicleWrapper* ptr_wrapper_;
+      
       ros::NodeHandle nh_;
+      image_transport::ImageTransport it_;
+      image_transport::Publisher image_transport_pub_;
+
       TelemetryType telemetry_from_fc_;
 
       int           app_id_;

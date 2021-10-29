@@ -839,7 +839,8 @@ void VehicleNode::publishMainCameraImage(CameraRGBImage rgbImg, void* userData)
 
 void VehicleNode::publishMainCameraImageCore(const sensor_msgs::Image& img)
 {
-  main_camera_stream_publisher_.publish(img);
+  //main_camera_stream_publisher_.publish(img);
+  image_transport_pub_.publish(img);
 }
 
 void VehicleNode::publishFPVCameraImage(CameraRGBImage rgbImg, void* userData)

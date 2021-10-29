@@ -14,6 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
     rospy
     std_msgs
     sensor_msgs
+    image_transport
     message_filters # for message_filter
   )
 

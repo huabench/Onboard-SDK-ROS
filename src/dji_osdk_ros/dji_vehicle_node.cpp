@@ -39,15 +39,17 @@
 using namespace dji_osdk_ros;
 #define M300_FRONT_STEREO_PARAM_YAML_NAME "m300_front_stereo_param.yaml"
 
-VehicleNode::VehicleNode(int test)
+VehicleNode::VehicleNode(int test): it_(nh_)
 {
   initService();
 }
 
-VehicleNode::VehicleNode():telemetry_from_fc_(TelemetryType::USE_ROS_BROADCAST),
-                           R_FLU2FRD_(tf::Matrix3x3(1,  0,  0, 0, -1,  0, 0,  0, -1)),
-                           R_ENU2NED_(tf::Matrix3x3(0,  1,  0, 1,  0,  0, 0,  0, -1)),
-                           curr_align_state_(AlignStatus::UNALIGNED)
+VehicleNode::VehicleNode(): it_(nh_),
+                            image_transport_pub_(it_.advertise("iusl/main_camera_images", 1)),
+                            telemetry_from_fc_(TelemetryType::USE_ROS_BROADCAST),
+                            R_FLU2FRD_(tf::Matrix3x3(1,  0,  0, 0, -1,  0, 0,  0, -1)),
+                            R_ENU2NED_(tf::Matrix3x3(0,  1,  0, 1,  0,  0, 0,  0, -1)),
+                            curr_align_state_(AlignStatus::UNALIGNED)
 {
   nh_.param("/vehicle_node/app_id",        app_id_, 12345);
   nh_.param("/vehicle_node/enc_key",       enc_key_, std::string("abcde123"));
