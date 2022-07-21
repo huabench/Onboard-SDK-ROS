@@ -261,7 +261,8 @@ add_service_files(
 MESSAGE(STATUS "USB INCLUDE: ${LIBUSB_1_INCLUDE_DIR}")
 catkin_package(
   INCLUDE_DIRS include
-#  LIBRARIES onboard-sdk-ros
+  LIBRARIES
+    ${PROJECT_NAME}_extend
   CATKIN_DEPENDS
     message_runtime
     geometry_msgs
